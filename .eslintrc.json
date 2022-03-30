@@ -12,5 +12,7 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
-  "rules": {}
+  "rules": {
+    "react/prefer-stateless-function": [0]
+  }
 }

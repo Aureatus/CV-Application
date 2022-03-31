@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import GeneralInfo from "./components/GeneralInfo";
 
 class App extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
-    return <div />;
+    return (
+      <div>
+        <GeneralInfo />
+      </div>
+    );
   }
 }
 

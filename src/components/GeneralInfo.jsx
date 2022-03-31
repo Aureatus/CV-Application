@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class GeneralInfo extends Component {
   render() {
     return (
-      <div>
+      <div className="general-info">
         <header>General Information</header>
         <main>
           <div className="name">

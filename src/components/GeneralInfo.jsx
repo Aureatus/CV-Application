@@ -25,6 +25,11 @@ class GeneralInfo extends Component {
                 <input id="phone-number-input" type="tel" />
               </label>
             </div>
+            <div className="submit">
+              <label htmlFor="submit">
+                <input id="submit" type="submit" />
+              </label>
+            </div>
           </form>
         </main>
       </div>

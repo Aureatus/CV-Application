@@ -5,7 +5,13 @@ class GeneralInfo extends Component {
     return (
       <div>
         <header>General Information</header>
-        <main />
+        <main>
+          <div className="name">
+            <label htmlFor="name-input">
+              <input id="name-input" type="text" />
+            </label>
+          </div>
+        </main>
       </div>
     );
   }

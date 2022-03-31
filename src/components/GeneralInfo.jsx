@@ -2,7 +2,12 @@ import React, { Component } from "react";
 
 class GeneralInfo extends Component {
   render() {
-    return <div />;
+    return (
+      <div>
+        <header>General Information</header>
+        <main />
+      </div>
+    );
   }
 }
 

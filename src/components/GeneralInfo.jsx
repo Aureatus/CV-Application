@@ -16,6 +16,11 @@ class GeneralInfo extends Component {
               <input id="email-input" type="email" />
             </label>
           </div>
+          <div className="phone-number">
+            <label htmlFor="phone-number-input">
+              <input id="phone-number-input" type="tel" />
+            </label>
+          </div>
         </main>
       </div>
     );

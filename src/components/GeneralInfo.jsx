@@ -1,34 +1,7 @@
 import React, { Component } from "react";
 import NameComponent from "./NameComponent";
 import EmailComponent from "./EmailComponent";
-
-function PhoneComponent(props) {
-  const { submitted } = props;
-  const { phone } = props;
-
-  if (submitted === false) {
-    return (
-      <div className="phone-number">
-        <label htmlFor="phone-number-input">
-          Phone Number
-          <input id="phone-number-input" type="tel" />
-        </label>
-      </div>
-    );
-  }
-
-  if (submitted === true) {
-    return (
-      <div className="phone-number">
-        <label htmlFor="phone-number-input">
-          Phone Number
-          <p>{phone}</p>
-          <button type="button">Edit</button>
-        </label>
-      </div>
-    );
-  }
-}
+import PhoneComponent from "./PhoneComponent";
 
 function SubmitComponent(props) {
   const { submitted } = props;

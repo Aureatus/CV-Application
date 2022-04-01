@@ -25,6 +25,31 @@ function NameComponent(props) {
   }
 }
 
+function EmailComponent(props) {
+  const { submitted } = props;
+  const { email } = props;
+  if (submitted === false) {
+    return (
+      <div className="email">
+        <label htmlFor="email-input">
+          Email
+          <input id="email-input" type="email" />
+        </label>
+      </div>
+    );
+  }
+  if (submitted === true) {
+    return (
+      <div className="email">
+        <label htmlFor="email-input">
+          Email
+          <p>{email}</p>
+        </label>
+      </div>
+    );
+  }
+}
+
 class GeneralInfo extends Component {
   constructor() {
     super();
@@ -65,18 +90,14 @@ class GeneralInfo extends Component {
   render() {
     const { submitted } = this.state;
     const { name } = this.state;
+    const { email } = this.state;
     return (
       <div className="general-info">
         <header>General Information</header>
         <main>
           <form onSubmit={this.inputToStatic} onChange={this.updateState}>
             <NameComponent submitted={submitted} name={name} />
-            <div className="email">
-              <label htmlFor="email-input">
-                Email
-                <input id="email-input" type="email" />
-              </label>
-            </div>
+            <EmailComponent submitted={submitted} email={email} />
             <div className="phone-number">
               <label htmlFor="phone-number-input">
                 Phone Number

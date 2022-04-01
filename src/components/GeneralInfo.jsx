@@ -67,9 +67,7 @@ class GeneralInfo extends Component {
           this.setState({ name: e.target.value }, () => {});
           break;
         case "email-input":
-          this.setState({ email: e.target.value }, () => {
-            console.log(this.state);
-          });
+          this.setState({ email: e.target.value }, () => {});
           break;
         case "phone-number-input":
           this.setState({ phone: e.target.value }, () => {

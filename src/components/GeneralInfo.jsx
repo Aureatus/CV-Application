@@ -123,11 +123,6 @@ class GeneralInfo extends Component {
           break;
       }
     };
-
-    this.inputToStatic = (e) => {
-      this.setState({ submitted: true });
-      e.preventDefault();
-    };
   }
 
   render() {
@@ -139,7 +134,13 @@ class GeneralInfo extends Component {
       <div className="general-info">
         <header>General Information</header>
         <main>
-          <form onSubmit={this.inputToStatic} onChange={this.updateState}>
+          <form
+            onSubmit={(e) => {
+              this.setState({ submitted: true });
+              e.preventDefault();
+            }}
+            onChange={this.updateState}
+          >
             <NameComponent submitted={submitted} name={name} />
             <EmailComponent submitted={submitted} email={email} />
             <PhoneComponent submitted={submitted} phone={phone} />

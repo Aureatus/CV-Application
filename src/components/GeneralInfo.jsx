@@ -50,6 +50,33 @@ function EmailComponent(props) {
   }
 }
 
+function PhoneComponent(props) {
+  const { submitted } = props;
+  const { phone } = props;
+
+  if (submitted === false) {
+    return (
+      <div className="phone-number">
+        <label htmlFor="phone-number-input">
+          Phone Number
+          <input id="phone-number-input" type="tel" />
+        </label>
+      </div>
+    );
+  }
+
+  if (submitted === true) {
+    return (
+      <div className="phone-number">
+        <label htmlFor="phone-number-input">
+          Phone Number
+          <p>{phone}</p>
+        </label>
+      </div>
+    );
+  }
+}
+
 class GeneralInfo extends Component {
   constructor() {
     super();
@@ -89,6 +116,7 @@ class GeneralInfo extends Component {
     const { submitted } = this.state;
     const { name } = this.state;
     const { email } = this.state;
+    const { phone } = this.state;
     return (
       <div className="general-info">
         <header>General Information</header>
@@ -96,12 +124,7 @@ class GeneralInfo extends Component {
           <form onSubmit={this.inputToStatic} onChange={this.updateState}>
             <NameComponent submitted={submitted} name={name} />
             <EmailComponent submitted={submitted} email={email} />
-            <div className="phone-number">
-              <label htmlFor="phone-number-input">
-                Phone Number
-                <input id="phone-number-input" type="tel" />
-              </label>
-            </div>
+            <PhoneComponent submitted={submitted} phone={phone} />
             <div className="submit">
               <label htmlFor="submit">
                 <input id="submit" type="submit" />

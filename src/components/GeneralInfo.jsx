@@ -2,23 +2,7 @@ import React, { Component } from "react";
 import NameComponent from "./NameComponent";
 import EmailComponent from "./EmailComponent";
 import PhoneComponent from "./PhoneComponent";
-
-function SubmitComponent(props) {
-  const { submitted } = props;
-
-  if (submitted === false) {
-    return (
-      <div className="submit">
-        <label htmlFor="submit">
-          <input id="submit" type="submit" />
-        </label>
-      </div>
-    );
-  }
-  if (submitted === true) {
-    return <div />;
-  }
-}
+import SubmitComponent from "./SubmitComponent";
 
 class GeneralInfo extends Component {
   constructor() {

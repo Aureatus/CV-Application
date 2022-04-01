@@ -1,30 +1,5 @@
 import React, { Component } from "react";
-
-function NameComponent(props) {
-  const { submitted } = props;
-  const { name } = props;
-  if (submitted === false) {
-    return (
-      <div className="name">
-        <label htmlFor="name-input">
-          Name
-          <input id="name-input" type="text" />
-        </label>
-      </div>
-    );
-  }
-  if (submitted === true) {
-    return (
-      <div className="name">
-        <label htmlFor="name-input">
-          Name
-          <p>{name}</p>
-          <button type="button">Edit</button>
-        </label>
-      </div>
-    );
-  }
-}
+import NameComponent from "./NameComponent";
 
 function EmailComponent(props) {
   const { submitted } = props;

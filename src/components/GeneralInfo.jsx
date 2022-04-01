@@ -19,6 +19,7 @@ function NameComponent(props) {
         <label htmlFor="name-input">
           Name
           <p>{name}</p>
+          <button type="button">Edit</button>
         </label>
       </div>
     );
@@ -44,6 +45,7 @@ function EmailComponent(props) {
         <label htmlFor="email-input">
           Email
           <p>{email}</p>
+          <button type="button">Edit</button>
         </label>
       </div>
     );
@@ -71,9 +73,27 @@ function PhoneComponent(props) {
         <label htmlFor="phone-number-input">
           Phone Number
           <p>{phone}</p>
+          <button type="button">Edit</button>
         </label>
       </div>
     );
+  }
+}
+
+function SubmitComponent(props) {
+  const { submitted } = props;
+
+  if (submitted === false) {
+    return (
+      <div className="submit">
+        <label htmlFor="submit">
+          <input id="submit" type="submit" />
+        </label>
+      </div>
+    );
+  }
+  if (submitted === true) {
+    return <div />;
   }
 }
 
@@ -91,15 +111,13 @@ class GeneralInfo extends Component {
     this.updateState = (e) => {
       switch (e.target.id) {
         case "name-input":
-          this.setState({ name: e.target.value }, () => {});
+          this.setState({ name: e.target.value });
           break;
         case "email-input":
-          this.setState({ email: e.target.value }, () => {});
+          this.setState({ email: e.target.value });
           break;
         case "phone-number-input":
-          this.setState({ phone: e.target.value }, () => {
-            console.log(this.state);
-          });
+          this.setState({ phone: e.target.value });
           break;
         default:
           break;
@@ -125,11 +143,7 @@ class GeneralInfo extends Component {
             <NameComponent submitted={submitted} name={name} />
             <EmailComponent submitted={submitted} email={email} />
             <PhoneComponent submitted={submitted} phone={phone} />
-            <div className="submit">
-              <label htmlFor="submit">
-                <input id="submit" type="submit" />
-              </label>
-            </div>
+            <SubmitComponent submitted={submitted} />
           </form>
         </main>
       </div>

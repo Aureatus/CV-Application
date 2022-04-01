@@ -2,12 +2,23 @@ import React, { Component } from "react";
 
 function NameComponent(props) {
   const { submitted } = props;
-  if (submitted === true) {
+  const { name } = props;
+  if (submitted === false) {
     return (
       <div className="name">
         <label htmlFor="name-input">
           Name
           <input id="name-input" type="text" />
+        </label>
+      </div>
+    );
+  }
+  if (submitted === true) {
+    return (
+      <div className="name">
+        <label htmlFor="name-input">
+          Name
+          <p>{name}</p>
         </label>
       </div>
     );
@@ -22,15 +33,13 @@ class GeneralInfo extends Component {
       name: "",
       email: "",
       phone: "",
-      submitted: true,
+      submitted: false,
     };
 
     this.updateState = (e) => {
       switch (e.target.id) {
         case "name-input":
-          this.setState({ name: e.target.value }, () => {
-            console.log(this.state);
-          });
+          this.setState({ name: e.target.value }, () => {});
           break;
         case "email-input":
           this.setState({ email: e.target.value }, () => {
@@ -48,18 +57,20 @@ class GeneralInfo extends Component {
     };
 
     this.inputToStatic = (e) => {
+      this.setState({ submitted: true });
       e.preventDefault();
     };
   }
 
   render() {
     const { submitted } = this.state;
+    const { name } = this.state;
     return (
       <div className="general-info">
         <header>General Information</header>
         <main>
           <form onSubmit={this.inputToStatic} onChange={this.updateState}>
-            <NameComponent submitted={submitted} />
+            <NameComponent submitted={submitted} name={name} />
             <div className="email">
               <label htmlFor="email-input">
                 Email

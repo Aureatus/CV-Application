@@ -15,10 +15,14 @@ class GeneralInfo extends Component {
       submitted: false,
       editActive: {
         nameEditActive: false,
+        emailEditActive: false,
       },
     };
 
     this.updateStateNameEmailPhone = (e) => {
+      if (e.target.validity.valid === false) {
+        return;
+      }
       switch (e.target.id) {
         case "name-input":
           this.setState({ name: e.target.value });
@@ -41,6 +45,7 @@ class GeneralInfo extends Component {
         this.setState({
           editActive: {
             nameEditActive: true,
+            emailEditActive: false,
           },
         });
       }
@@ -48,6 +53,28 @@ class GeneralInfo extends Component {
         this.setState({
           editActive: {
             nameEditActive: false,
+            emailEditActive: false,
+          },
+        });
+      }
+    };
+
+    this.emailEditActiveToggle = () => {
+      const { editActive } = this.state;
+      const { emailEditActive } = editActive;
+      if (emailEditActive === false) {
+        this.setState({
+          editActive: {
+            nameEditActive: false,
+            emailEditActive: true,
+          },
+        });
+      }
+      if (emailEditActive === true) {
+        this.setState({
+          editActive: {
+            nameEditActive: false,
+            emailEditActive: false,
           },
         });
       }
@@ -61,6 +88,7 @@ class GeneralInfo extends Component {
     const { phone } = this.state;
     const { editActive } = this.state;
     const { nameEditActive } = editActive;
+    const { emailEditActive } = editActive;
     return (
       <div className="general-info">
         <header>General Information</header>
@@ -79,7 +107,13 @@ class GeneralInfo extends Component {
               nameEditActive={nameEditActive}
               nameEditActiveToggle={this.nameEditActiveToggle}
             />
-            <EmailComponent submitted={submitted} email={email} />
+            <EmailComponent
+              submitted={submitted}
+              email={email}
+              updateStateNameEmailPhone={this.updateStateNameEmailPhone}
+              emailEditActive={emailEditActive}
+              emailEditActiveToggle={this.emailEditActiveToggle}
+            />
             <PhoneComponent submitted={submitted} phone={phone} />
             <SubmitComponent submitted={submitted} />
           </form>

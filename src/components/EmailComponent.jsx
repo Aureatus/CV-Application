@@ -4,6 +4,9 @@ class EmailComponent extends Component {
   render() {
     const { submitted } = this.props;
     const { email } = this.props;
+    const { updateStateNameEmailPhone } = this.props;
+    const { emailEditActive } = this.props;
+    const { emailEditActiveToggle } = this.props;
     const inputOrStatic = () => {
       if (submitted === false) {
         return (
@@ -15,16 +18,48 @@ class EmailComponent extends Component {
           </div>
         );
       }
+
       if (submitted === true) {
-        return (
-          <div className="email">
-            <label htmlFor="email-input">
-              Email
-              <p>{email}</p>
-              <button type="button">Edit</button>
-            </label>
-          </div>
-        );
+        if (emailEditActive === false) {
+          return (
+            <div className="email">
+              <label htmlFor="email-input">
+                Email
+                <p>{email}</p>
+                <button type="button" onClick={emailEditActiveToggle}>
+                  Edit
+                </button>
+              </label>
+            </div>
+          );
+        }
+        if (emailEditActive === true) {
+          return (
+            <div className="email">
+              <label htmlFor="email-input">
+                Email
+                <input
+                  id="email-input"
+                  type="email"
+                  defaultValue={email}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    const emailInput = e.target.parentElement.children[0];
+                    if (emailInput.validity.valid) {
+                      emailEditActiveToggle();
+                      updateStateNameEmailPhone(e);
+                    }
+                  }}
+                >
+                  Submit
+                </button>
+              </label>
+            </div>
+          );
+        }
       }
       return false;
     };

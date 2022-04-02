@@ -3,47 +3,51 @@ import React, { Component } from "react";
 class SchoolNameComponent extends Component {
   render() {
     const { submitted } = this.props;
-    const { name } = this.props;
-    const { updateStateNameEmailPhone } = this.props;
-    const { nameEditActive } = this.props;
-    const { nameEditActiveToggle } = this.props;
+    const { schoolName } = this.props;
+    const { updateStateSchoolTitleDate } = this.props;
+    const { schoolNameEditActive } = this.props;
+    const { schoolNameEditActiveToggle } = this.props;
     const inputOrStatic = () => {
       if (submitted === false) {
         return (
-          <div className="name">
-            <label htmlFor="name-input">
-              Name
-              <input id="name-input" type="text" />
+          <div className="school-name">
+            <label htmlFor="school-name-input">
+              School Name
+              <input id="school-name-input" type="text" />
             </label>
           </div>
         );
       }
 
       if (submitted === true) {
-        if (nameEditActive === false) {
+        if (schoolNameEditActive === false) {
           return (
-            <div className="name">
-              <label htmlFor="name-input">
-                Name
-                <p>{name}</p>
-                <button type="button" onClick={nameEditActiveToggle}>
+            <div className="school-name">
+              <label htmlFor="school-name-input">
+                School Name
+                <p>{schoolName}</p>
+                <button type="button" onClick={schoolNameEditActiveToggle}>
                   Edit
                 </button>
               </label>
             </div>
           );
         }
-        if (nameEditActive === true) {
+        if (schoolNameEditActive === true) {
           return (
-            <div className="name">
-              <label htmlFor="name-input">
-                Name
-                <input id="name-input" type="text" defaultValue={name} />
+            <div className="school-name">
+              <label htmlFor="school-name-input">
+                School Name
+                <input
+                  id="school-name-input"
+                  type="text"
+                  defaultValue={schoolName}
+                />
                 <button
                   type="button"
                   onClick={(e) => {
-                    nameEditActiveToggle();
-                    updateStateNameEmailPhone(e);
+                    schoolNameEditActiveToggle();
+                    updateStateSchoolTitleDate(e);
                   }}
                 >
                   Submit

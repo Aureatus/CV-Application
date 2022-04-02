@@ -13,9 +13,12 @@ class GeneralInfo extends Component {
       email: "",
       phone: "",
       submitted: false,
+      editActive: {
+        nameEditActive: false,
+      },
     };
 
-    this.updateState = (e) => {
+    this.updateStateNameEmailPhone = (e) => {
       switch (e.target.id) {
         case "name-input":
           this.setState({ name: e.target.value });
@@ -30,6 +33,25 @@ class GeneralInfo extends Component {
           break;
       }
     };
+
+    this.nameEditActiveToggle = () => {
+      const { editActive } = this.state;
+      const { nameEditActive } = editActive;
+      if (nameEditActive === false) {
+        this.setState({
+          editActive: {
+            nameEditActive: true,
+          },
+        });
+      }
+      if (nameEditActive === true) {
+        this.setState({
+          editActive: {
+            nameEditActive: false,
+          },
+        });
+      }
+    };
   }
 
   render() {
@@ -37,6 +59,8 @@ class GeneralInfo extends Component {
     const { name } = this.state;
     const { email } = this.state;
     const { phone } = this.state;
+    const { editActive } = this.state;
+    const { nameEditActive } = editActive;
     return (
       <div className="general-info">
         <header>General Information</header>
@@ -46,9 +70,15 @@ class GeneralInfo extends Component {
               this.setState({ submitted: true });
               e.preventDefault();
             }}
-            onChange={this.updateState}
+            onChange={this.updateStateNameEmailPhone}
           >
-            <NameComponent submitted={submitted} name={name} />
+            <NameComponent
+              submitted={submitted}
+              name={name}
+              updateStateNameEmailPhone={this.updateStateNameEmailPhone}
+              nameEditActive={nameEditActive}
+              nameEditActiveToggle={this.nameEditActiveToggle}
+            />
             <EmailComponent submitted={submitted} email={email} />
             <PhoneComponent submitted={submitted} phone={phone} />
             <SubmitComponent submitted={submitted} />

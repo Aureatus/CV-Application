@@ -16,6 +16,7 @@ class GeneralInfo extends Component {
       editActive: {
         nameEditActive: false,
         emailEditActive: false,
+        phoneEditActive: false,
       },
     };
 
@@ -46,6 +47,7 @@ class GeneralInfo extends Component {
           editActive: {
             nameEditActive: true,
             emailEditActive: false,
+            phoneEditActive: false,
           },
         });
       }
@@ -54,6 +56,7 @@ class GeneralInfo extends Component {
           editActive: {
             nameEditActive: false,
             emailEditActive: false,
+            phoneEditActive: false,
           },
         });
       }
@@ -67,6 +70,7 @@ class GeneralInfo extends Component {
           editActive: {
             nameEditActive: false,
             emailEditActive: true,
+            phoneEditActive: false,
           },
         });
       }
@@ -75,6 +79,30 @@ class GeneralInfo extends Component {
           editActive: {
             nameEditActive: false,
             emailEditActive: false,
+            phoneEditActive: false,
+          },
+        });
+      }
+    };
+
+    this.phoneEditActiveToggle = () => {
+      const { editActive } = this.state;
+      const { phoneEditActive } = editActive;
+      if (phoneEditActive === false) {
+        this.setState({
+          editActive: {
+            nameEditActive: false,
+            emailEditActive: false,
+            phoneEditActive: true,
+          },
+        });
+      }
+      if (phoneEditActive === true) {
+        this.setState({
+          editActive: {
+            nameEditActive: false,
+            emailEditActive: false,
+            phoneEditActive: false,
           },
         });
       }
@@ -89,6 +117,7 @@ class GeneralInfo extends Component {
     const { editActive } = this.state;
     const { nameEditActive } = editActive;
     const { emailEditActive } = editActive;
+    const { phoneEditActive } = editActive;
     return (
       <div className="general-info">
         <header>General Information</header>
@@ -114,7 +143,13 @@ class GeneralInfo extends Component {
               emailEditActive={emailEditActive}
               emailEditActiveToggle={this.emailEditActiveToggle}
             />
-            <PhoneComponent submitted={submitted} phone={phone} />
+            <PhoneComponent
+              submitted={submitted}
+              phone={phone}
+              updateStateNameEmailPhone={this.updateStateNameEmailPhone}
+              phoneEditActive={phoneEditActive}
+              phoneEditActiveToggle={this.phoneEditActiveToggle}
+            />
             <SubmitComponent submitted={submitted} />
           </form>
         </main>

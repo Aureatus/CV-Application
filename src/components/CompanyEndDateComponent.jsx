@@ -13,7 +13,7 @@ class CompanyEndDateComponent extends Component {
           <div className="company-end-date">
             <label htmlFor="company-end-date-input">
               Company End Date
-              <input id="company-end-date-input" type="text" />
+              <input id="company-end-date-input" type="date" />
             </label>
           </div>
         );
@@ -40,7 +40,7 @@ class CompanyEndDateComponent extends Component {
                 Company End Date
                 <input
                   id="company-end-date-input"
-                  type="text"
+                  type="date"
                   defaultValue={companyEndDate}
                 />
                 <button

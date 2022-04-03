@@ -13,7 +13,7 @@ class CompanyStartDateComponent extends Component {
           <div className="company-start-date">
             <label htmlFor="company-start-date-input">
               Company Start Date
-              <input id="company-start-date-input" type="text" />
+              <input id="company-start-date-input" type="date" />
             </label>
           </div>
         );
@@ -43,7 +43,7 @@ class CompanyStartDateComponent extends Component {
                 Company Start Date
                 <input
                   id="company-start-date-input"
-                  type="text"
+                  type="date"
                   defaultValue={companyStartDate}
                 />
                 <button

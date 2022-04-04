@@ -6,7 +6,7 @@ import PracticalInfo from "./components/PracticalInfo";
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="app">
         <GeneralInfo />
         <EducationalInfo />
         <PracticalInfo />

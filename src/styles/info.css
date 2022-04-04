@@ -64,9 +64,42 @@ label {
 }
 
 input {
-  height: 60%;
+  height: 2.5vh;
   width: 40%;
 
   border: 1px solid black;
   border-radius: 0.2rem;
+}
+
+div.submit {
+  display: flex;
+  justify-content: center;
+}
+
+label[for="submit"] {
+  height: 4vh;
+  width: 15%;
+}
+
+input[type="submit"] {
+  background-color: #90ee90;
+  height: 4vh;
+  width: 100%;
+
+  border: none;
+  border-radius: 1rem;
+}
+
+label > button {
+  height: 4vh;
+  width: 15%;
+}
+
+button {
+  background-color: lightsteelblue;
+  height: 4vh;
+  width: 100%;
+
+  border: none;
+  border-radius: 1rem;
 }

@@ -11,3 +11,8 @@ div.app {
 
   background-color: white;
 }
+
+hr {
+  border: 1px solid #d3d3d3;
+  width: 80%;
+}

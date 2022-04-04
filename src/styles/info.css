@@ -3,8 +3,21 @@
 .practical-info {
   display: grid;
   grid-template: 1fr 2fr / 1fr;
+  height: 80%;
   width: 80%;
 
   justify-items: center;
   align-items: center;
+}
+header {
+  width: 80%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: calc(0.7rem + 1vw);
+
+  font-family: "Raleway", sans-serif;
 }

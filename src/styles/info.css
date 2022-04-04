@@ -30,3 +30,12 @@ main {
   justify-content: center;
   align-items: center;
 }
+
+form {
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template: auto;
+  row-gap: 2vh;
+}

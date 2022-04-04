@@ -1,0 +1,5 @@
+div.app {
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr;
+  row-gap: 2vh;
+}

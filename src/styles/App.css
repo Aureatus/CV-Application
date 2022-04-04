@@ -1,4 +1,6 @@
 div.app {
+  box-sizing: border-box;
+
   display: grid;
   grid-template: 8fr 1fr 8fr 1fr 8fr / 1fr;
   row-gap: 2vh;
@@ -10,6 +12,9 @@ div.app {
   align-items: center;
 
   background-color: white;
+
+  border: 3px solid lightsteelblue;
+  border-radius: 8px;
 }
 
 hr {

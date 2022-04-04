@@ -16,7 +16,7 @@ header {
   justify-items: center;
   align-items: center;
 
-  font-size: calc(0.5rem + 0.6vw + 0.7vh);
+  font-size: calc(0.7rem + 0.6vw + 0.7vh);
 
   font-family: "Raleway", sans-serif;
 }
@@ -60,7 +60,7 @@ label {
   justify-items: center;
   align-items: center;
 
-  font-size: calc(0.5rem + 0.5vw + 0.4vh);
+  font-size: calc(0.6rem + 0.5vw + 0.4vh);
 }
 
 input {
@@ -79,6 +79,7 @@ div.submit {
 label[for="submit"] {
   height: 4vh;
   width: 15%;
+  min-width: 50px;
 }
 
 input[type="submit"] {
@@ -93,6 +94,7 @@ input[type="submit"] {
 label > button {
   height: 4vh;
   width: 15%;
+  min-width: 50px;
 }
 
 button {

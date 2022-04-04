@@ -2,7 +2,7 @@ div.app {
   box-sizing: border-box;
 
   display: grid;
-  grid-template: 8fr 1fr 8fr 1fr 8fr / 1fr;
+  grid-template: 8fr 1fr 8fr 1fr 15fr / 1fr;
 
   height: 100%;
   width: 100%;

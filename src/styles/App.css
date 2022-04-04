@@ -3,7 +3,6 @@ div.app {
 
   display: grid;
   grid-template: 8fr 1fr 8fr 1fr 8fr / 1fr;
-  row-gap: 2vh;
 
   height: 100%;
   width: 100%;

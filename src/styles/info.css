@@ -3,4 +3,8 @@
 .practical-info {
   display: grid;
   grid-template: 1fr 2fr / 1fr;
+  width: 80%;
+
+  justify-items: center;
+  align-items: center;
 }

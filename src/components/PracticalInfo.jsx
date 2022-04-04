@@ -7,6 +7,7 @@ import CompanyStartDateComponent from "./CompanyStartDateComponent";
 import CompanyEndDateComponent from "./CompanyEndDateComponent";
 
 import SubmitComponent from "./SubmitComponent";
+import "../styles/info.css";
 
 class PracticalInfo extends Component {
   constructor() {

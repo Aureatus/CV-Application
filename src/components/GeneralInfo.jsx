@@ -3,6 +3,7 @@ import NameComponent from "./NameComponent";
 import EmailComponent from "./EmailComponent";
 import PhoneComponent from "./PhoneComponent";
 import SubmitComponent from "./SubmitComponent";
+import "../styles/info.css";
 
 class GeneralInfo extends Component {
   constructor() {

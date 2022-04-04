@@ -3,6 +3,7 @@ import SchoolNameComponent from "./SchoolNameComponent";
 import StudyTitleComponent from "./StudyTitleComponent";
 import StudyDateComponent from "./StudyDateComponent";
 import SubmitComponent from "./SubmitComponent";
+import "../styles/info.css";
 
 class EducationalInfo extends Component {
   constructor() {

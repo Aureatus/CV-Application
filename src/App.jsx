@@ -3,6 +3,8 @@ import GeneralInfo from "./components/GeneralInfo";
 import EducationalInfo from "./components/EducationalInfo";
 import PracticalInfo from "./components/PracticalInfo";
 
+import "./styles/App.css";
+
 class App extends Component {
   render() {
     return (

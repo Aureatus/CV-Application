@@ -60,7 +60,8 @@ label {
   justify-items: center;
   align-items: center;
 
-  font-size: calc(0.6rem + 0.5vw + 0.4vh);
+  font-size: calc(0.5rem + 1vw + 0.3vh);
+  font-family: "Raleway", sans-serif;
 }
 
 input {
@@ -69,6 +70,11 @@ input {
 
   border: 1px solid black;
   border-radius: 0.2rem;
+}
+
+p {
+  font-size: calc(0.2rem + 1vw + 0.3vh);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 div.submit {

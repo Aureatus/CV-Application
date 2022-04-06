@@ -1,8 +1,8 @@
 import React from "react";
 import GeneralInfo from "./components/GeneralInfo";
 import EducationalInfo from "./components/EducationalInfo";
-/* import PracticalInfo from "./components/PracticalInfo";
- */
+import PracticalInfo from "./components/PracticalInfo";
+
 import "./styles/App.css";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <hr />
       <EducationalInfo />
       <hr />
-      {/* <PracticalInfo /> */}
+      <PracticalInfo />
     </div>
   );
 }

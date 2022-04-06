@@ -1,162 +1,115 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import SchoolNameComponent from "./SchoolNameComponent";
 import StudyTitleComponent from "./StudyTitleComponent";
 import StudyDateComponent from "./StudyDateComponent";
 import SubmitComponent from "./SubmitComponent";
 import "../styles/info.css";
 
-class EducationalInfo extends Component {
-  constructor() {
-    super();
+function EducationalInfo() {
+  const [schoolName, setSchoolName] = useState("");
+  const [studyTitle, setStudyTitle] = useState("");
+  const [studyDate, setStudyDate] = useState("");
 
-    this.state = {
-      schoolName: "",
-      studyTitle: "",
-      studyDate: "",
-      submitted: false,
-      editActive: {
-        schoolNameEditActive: false,
-        studyTitleEditActive: false,
-        studyDateEditActive: false,
-      },
-    };
+  const [submitted, setSubmitted] = useState(false);
 
-    this.updateStateSchoolTitleDate = (e) => {
-      if (e.target.validity.valid === false) {
-        return;
-      }
-      switch (e.target.id) {
-        case "school-name-input":
-          this.setState({ schoolName: e.target.value });
-          break;
-        case "study-title-input":
-          this.setState({ studyTitle: e.target.value });
-          break;
-        case "study-date-input":
-          this.setState({ studyDate: e.target.value });
-          break;
-        default:
-          break;
-      }
-    };
+  const [schoolNameEditActive, setSchoolNameEditActive] = useState(false);
+  const [studyTitleEditActive, setStudyTitleEditActive] = useState(false);
+  const [studyDateEditActive, setStudyDateEditActive] = useState(false);
 
-    this.schoolNameEditActiveToggle = () => {
-      const { editActive } = this.state;
-      const { schoolNameEditActive } = editActive;
-      if (schoolNameEditActive === false) {
-        this.setState({
-          editActive: {
-            schoolNameEditActive: true,
-            studyTitleEditActive: false,
-            studyDateEditActive: false,
-          },
-        });
-      }
-      if (schoolNameEditActive === true) {
-        this.setState({
-          editActive: {
-            schoolNameEditActive: false,
-            studyTitleEditActive: false,
-            studyDateEditActive: false,
-          },
-        });
-      }
-    };
+  const updateStateSchoolTitleDate = (e) => {
+    if (e.target.validity.valid === false) {
+      return;
+    }
+    switch (e.target.id) {
+      case "school-name-input":
+        setSchoolName(e.target.value);
+        break;
+      case "study-title-input":
+        setStudyTitle(e.target.value);
+        break;
+      case "study-date-input":
+        setStudyDate(e.target.value);
+        break;
+      default:
+        break;
+    }
+  };
 
-    this.studyTitleEditActiveToggle = () => {
-      const { editActive } = this.state;
-      const { studyTitleEditActive } = editActive;
-      if (studyTitleEditActive === false) {
-        this.setState({
-          editActive: {
-            schoolNameEditActive: false,
-            studyTitleEditActive: true,
-            studyDateEditActive: false,
-          },
-        });
-      }
-      if (studyTitleEditActive === true) {
-        this.setState({
-          editActive: {
-            schoolNameEditActive: false,
-            studyTitleEditActive: false,
-            studyDateEditActive: false,
-          },
-        });
-      }
-    };
+  const schoolNameEditActiveToggle = () => {
+    if (schoolNameEditActive === false) {
+      setSchoolNameEditActive(true);
+      setStudyTitleEditActive(false);
+      setStudyDateEditActive(false);
+    }
+    if (schoolNameEditActive === true) {
+      setSchoolNameEditActive(false);
+      setStudyTitleEditActive(false);
+      setStudyDateEditActive(false);
+    }
+  };
 
-    this.studyDateEditActiveToggle = () => {
-      const { editActive } = this.state;
-      const { studyDateEditActive } = editActive;
-      if (studyDateEditActive === false) {
-        this.setState({
-          editActive: {
-            schoolNameEditActive: false,
-            studyTitleEditActive: false,
-            studyDateEditActive: true,
-          },
-        });
-      }
-      if (studyDateEditActive === true) {
-        this.setState({
-          editActive: {
-            schoolNameEditActive: false,
-            studyTitleEditActive: false,
-            studyDateEditActive: false,
-          },
-        });
-      }
-    };
-  }
+  const studyTitleEditActiveToggle = () => {
+    if (studyTitleEditActive === false) {
+      setSchoolNameEditActive(false);
+      setStudyTitleEditActive(true);
+      setStudyDateEditActive(false);
+    }
+    if (studyTitleEditActive === true) {
+      setSchoolNameEditActive(false);
+      setStudyTitleEditActive(false);
+      setStudyDateEditActive(false);
+    }
+  };
 
-  render() {
-    const { submitted } = this.state;
-    const { schoolName } = this.state;
-    const { studyTitle } = this.state;
-    const { studyDate } = this.state;
-    const { editActive } = this.state;
-    const { schoolNameEditActive } = editActive;
-    const { studyTitleEditActive } = editActive;
-    const { studyDateEditActive } = editActive;
-    return (
-      <div className="education-info">
-        <header>Educational Information</header>
-        <main>
-          <form
-            onSubmit={(e) => {
-              this.setState({ submitted: true });
-              e.preventDefault();
-            }}
-            onChange={this.updateStateSchoolTitleDate}
-          >
-            <SchoolNameComponent
-              submitted={submitted}
-              schoolName={schoolName}
-              updateStateSchoolTitleDate={this.updateStateSchoolTitleDate}
-              schoolNameEditActive={schoolNameEditActive}
-              schoolNameEditActiveToggle={this.schoolNameEditActiveToggle}
-            />
-            <StudyTitleComponent
-              submitted={submitted}
-              studyTitle={studyTitle}
-              updateStateSchoolTitleDate={this.updateStateSchoolTitleDate}
-              studyTitleEditActive={studyTitleEditActive}
-              studyTitleEditActiveToggle={this.studyTitleEditActiveToggle}
-            />
-            <StudyDateComponent
-              submitted={submitted}
-              studyDate={studyDate}
-              updateStateSchoolTitleDate={this.updateStateSchoolTitleDate}
-              studyDateEditActive={studyDateEditActive}
-              studyDateEditActiveToggle={this.studyDateEditActiveToggle}
-            />
-            <SubmitComponent submitted={submitted} />
-          </form>
-        </main>
-      </div>
-    );
-  }
+  const studyDateEditActiveToggle = () => {
+    if (studyDateEditActive === false) {
+      setSchoolNameEditActive(false);
+      setStudyTitleEditActive(false);
+      setStudyDateEditActive(true);
+    }
+    if (studyDateEditActive === true) {
+      setSchoolNameEditActive(false);
+      setStudyTitleEditActive(false);
+      setStudyDateEditActive(false);
+    }
+  };
+  return (
+    <div className="education-info">
+      <header>Educational Information</header>
+      <main>
+        <form
+          onSubmit={(e) => {
+            setSubmitted(true);
+            e.preventDefault();
+          }}
+          onChange={updateStateSchoolTitleDate}
+        >
+          <SchoolNameComponent
+            submitted={submitted}
+            schoolName={schoolName}
+            updateStateSchoolTitleDate={updateStateSchoolTitleDate}
+            schoolNameEditActive={schoolNameEditActive}
+            schoolNameEditActiveToggle={schoolNameEditActiveToggle}
+          />
+          <StudyTitleComponent
+            submitted={submitted}
+            studyTitle={studyTitle}
+            updateStateSchoolTitleDate={updateStateSchoolTitleDate}
+            studyTitleEditActive={studyTitleEditActive}
+            studyTitleEditActiveToggle={studyTitleEditActiveToggle}
+          />
+          <StudyDateComponent
+            submitted={submitted}
+            studyDate={studyDate}
+            updateStateSchoolTitleDate={updateStateSchoolTitleDate}
+            studyDateEditActive={studyDateEditActive}
+            studyDateEditActiveToggle={studyDateEditActiveToggle}
+          />
+          <SubmitComponent submitted={submitted} />
+        </form>
+      </main>
+    </div>
+  );
 }
 
 export default EducationalInfo;

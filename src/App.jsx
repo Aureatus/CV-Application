@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import GeneralInfo from "./components/GeneralInfo";
-import EducationalInfo from "./components/EducationalInfo";
+/*  import EducationalInfo from "./components/EducationalInfo";
 import PracticalInfo from "./components/PracticalInfo";
-
+*/
 import "./styles/App.css";
 
 class App extends Component {
@@ -10,10 +10,10 @@ class App extends Component {
     return (
       <div className="app">
         <GeneralInfo />
-        <hr />
+        {/*  <hr />
         <EducationalInfo />
         <hr />
-        <PracticalInfo />
+    <PracticalInfo /> */}
       </div>
     );
   }

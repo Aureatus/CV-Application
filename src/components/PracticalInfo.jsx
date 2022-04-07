@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 import CompanyNameComponent from "./CompanyNameComponent";
 import PositionTitleComponent from "./PositionTitleComponent";
@@ -9,254 +9,183 @@ import CompanyEndDateComponent from "./CompanyEndDateComponent";
 import SubmitComponent from "./SubmitComponent";
 import "../styles/info.css";
 
-class PracticalInfo extends Component {
-  constructor() {
-    super();
+function PracticalInfo() {
+  const [companyName, setCompanyName] = useState("");
+  const [positionTitle, setPositionTitle] = useState("");
+  const [mainJobTasks, setMainJobTasks] = useState("");
+  const [companyStartDate, setCompanyStartDate] = useState("");
+  const [companyEndDate, setCompanyEndDate] = useState("");
 
-    this.state = {
-      companyName: "",
-      positionTitle: "",
-      mainJobTasks: "",
-      companyStartDate: "",
-      companyEndDate: "",
-      submitted: false,
-      editActive: {
-        companyNameEditActive: false,
-        positionTitleEditActive: false,
-        mainJobTasksEditActive: false,
-        companyStartDateEditActive: false,
-        companyEndDateEditActive: false,
-      },
-    };
+  const [submitted, setSubmitted] = useState(false);
 
-    this.updateStateNameTitleTasksDate = (e) => {
-      if (e.target.validity.valid === false) {
-        return;
-      }
-      switch (e.target.id) {
-        case "company-name-input":
-          this.setState({ companyName: e.target.value });
-          break;
-        case "position-title-input":
-          this.setState({ positionTitle: e.target.value });
-          break;
-        case "main-job-tasks-input":
-          this.setState({ mainJobTasks: e.target.value });
-          break;
-        case "company-start-date-input":
-          this.setState({ companyStartDate: e.target.value });
-          break;
-        case "company-end-date-input":
-          this.setState({ companyEndDate: e.target.value });
-          break;
-        default:
-          break;
-      }
-    };
+  const [companyNameEditActive, setCompanyNameEditActive] = useState(false);
+  const [mainJobTasksEditActive, setMainJobTasksEditActive] = useState(false);
+  const [positionTitleEditActive, setPositionTitleEditActive] = useState(false);
 
-    this.companyNameEditActiveToggle = () => {
-      const { editActive } = this.state;
-      const { companyNameEditActive } = editActive;
-      if (companyNameEditActive === false) {
-        this.setState({
-          editActive: {
-            companyNameEditActive: true,
-            positionTitleEditActive: false,
-            mainJobTasksEditActive: false,
-            companyStartDateEditActive: false,
-            companyEndDateEditActive: false,
-          },
-        });
-      }
-      if (companyNameEditActive === true) {
-        this.setState({
-          editActive: {
-            companyNameEditActive: false,
-            positionTitleEditActive: false,
-            mainJobTasksEditActive: false,
-            companyStartDateEditActive: false,
-            companyEndDateEditActive: false,
-          },
-        });
-      }
-    };
+  const [companyStartDateEditActive, setCompanyStartDateEditActive] =
+    useState(false);
+  const [companyEndDateEditActive, setCompanyEndDateEditActive] =
+    useState(false);
 
-    this.positionTitleEditActiveToggle = () => {
-      const { editActive } = this.state;
-      const { positionTitleEditActive } = editActive;
-      if (positionTitleEditActive === false) {
-        this.setState({
-          editActive: {
-            companyNameEditActive: false,
-            positionTitleEditActive: true,
-            mainJobTasksEditActive: false,
-            companyStartDateEditActive: false,
-            companyEndDateEditActive: false,
-          },
-        });
-      }
-      if (positionTitleEditActive === true) {
-        this.setState({
-          editActive: {
-            companyNameEditActive: false,
-            positionTitleEditActive: false,
-            mainJobTasksEditActive: false,
-            companyStartDateEditActive: false,
-            companyEndDateEditActive: false,
-          },
-        });
-      }
-    };
+  const updateStateNameTitleTasksDate = (e) => {
+    if (e.target.validity.valid === false) {
+      return;
+    }
+    switch (e.target.id) {
+      case "company-name-input":
+        setCompanyName(e.target.value);
+        break;
+      case "position-title-input":
+        setPositionTitle(e.target.value);
+        break;
+      case "main-job-tasks-input":
+        setMainJobTasks(e.target.value);
+        break;
+      case "company-start-date-input":
+        setCompanyStartDate(e.target.value);
+        break;
+      case "company-end-date-input":
+        setCompanyEndDate(e.target.value);
+        break;
+      default:
+        break;
+    }
+  };
 
-    this.mainJobTasksEditActiveToggle = () => {
-      const { editActive } = this.state;
-      const { mainJobTasksEditActive } = editActive;
-      if (mainJobTasksEditActive === false) {
-        this.setState({
-          editActive: {
-            companyNameEditActive: false,
-            positionTitleEditActive: false,
-            mainJobTasksEditActive: true,
-            companyStartDateEditActive: false,
-            companyEndDateEditActive: false,
-          },
-        });
-      }
-      if (mainJobTasksEditActive === true) {
-        this.setState({
-          editActive: {
-            companyNameEditActive: false,
-            positionTitleEditActive: false,
-            mainJobTasksEditActive: false,
-            companyStartDateEditActive: false,
-            companyEndDateEditActive: false,
-          },
-        });
-      }
-    };
-    this.companyStartDateEditActiveToggle = () => {
-      const { editActive } = this.state;
-      const { companyStartDateEditActive } = editActive;
-      if (companyStartDateEditActive === false) {
-        this.setState({
-          editActive: {
-            companyNameEditActive: false,
-            positionTitleEditActive: false,
-            mainJobTasksEditActive: false,
-            companyStartDateEditActive: true,
-            companyEndDateEditActive: false,
-          },
-        });
-      }
-      if (companyStartDateEditActive === true) {
-        this.setState({
-          editActive: {
-            companyNameEditActive: false,
-            positionTitleEditActive: false,
-            mainJobTasksEditActive: false,
-            companyStartDateEditActive: false,
-            companyEndDateEditActive: false,
-          },
-        });
-      }
-    };
-    this.companyEndDateEditActiveToggle = () => {
-      const { editActive } = this.state;
-      const { companyEndDateEditActive } = editActive;
-      if (companyEndDateEditActive === false) {
-        this.setState({
-          editActive: {
-            companyNameEditActive: false,
-            positionTitleEditActive: false,
-            mainJobTasksEditActive: false,
-            companyStartDateEditActive: false,
-            companyEndDateEditActive: true,
-          },
-        });
-      }
-      if (companyEndDateEditActive === true) {
-        this.setState({
-          editActive: {
-            companyNameEditActive: false,
-            positionTitleEditActive: false,
-            mainJobTasksEditActive: false,
-            companyStartDateEditActive: false,
-            companyEndDateEditActive: false,
-          },
-        });
-      }
-    };
-  }
+  const companyNameEditActiveToggle = () => {
+    if (companyNameEditActive === false) {
+      setCompanyNameEditActive(true);
+      setPositionTitleEditActive(false);
+      setMainJobTasksEditActive(false);
+      setCompanyStartDateEditActive(false);
+      setCompanyEndDateEditActive(false);
+    }
+    if (companyNameEditActive === true) {
+      setCompanyNameEditActive(false);
+      setPositionTitleEditActive(false);
+      setMainJobTasksEditActive(false);
+      setCompanyStartDateEditActive(false);
+      setCompanyEndDateEditActive(false);
+    }
+  };
 
-  render() {
-    const { submitted } = this.state;
-    const { companyName } = this.state;
-    const { positionTitle } = this.state;
-    const { mainJobTasks } = this.state;
-    const { companyStartDate } = this.state;
-    const { companyEndDate } = this.state;
-    const { editActive } = this.state;
-    const { companyNameEditActive } = editActive;
-    const { positionTitleEditActive } = editActive;
-    const { mainJobTasksEditActive } = editActive;
-    const { companyStartDateEditActive } = editActive;
-    const { companyEndDateEditActive } = editActive;
-    return (
-      <div className="practical-info">
-        <header>Practical Information</header>
-        <main>
-          <form
-            onSubmit={(e) => {
-              this.setState({ submitted: true });
-              e.preventDefault();
-            }}
-            onChange={this.updateStateNameTitleTasksDate}
-          >
-            <CompanyNameComponent
-              submitted={submitted}
-              companyName={companyName}
-              updateStateNameTitleTasksDate={this.updateStateNameTitleTasksDate}
-              companyNameEditActive={companyNameEditActive}
-              companyNameEditActiveToggle={this.companyNameEditActiveToggle}
-            />
-            <PositionTitleComponent
-              submitted={submitted}
-              positionTitle={positionTitle}
-              updateStateNameTitleTasksDate={this.updateStateNameTitleTasksDate}
-              positionTitleEditActive={positionTitleEditActive}
-              positionTitleEditActiveToggle={this.positionTitleEditActiveToggle}
-            />
-            <MainJobTasksComponent
-              submitted={submitted}
-              mainJobTasks={mainJobTasks}
-              updateStateNameTitleTasksDate={this.updateStateNameTitleTasksDate}
-              mainJobTasksEditActive={mainJobTasksEditActive}
-              mainJobTasksEditActiveToggle={this.mainJobTasksEditActiveToggle}
-            />
-            <CompanyStartDateComponent
-              submitted={submitted}
-              companyStartDate={companyStartDate}
-              updateStateNameTitleTasksDate={this.updateStateNameTitleTasksDate}
-              companyStartDateEditActive={companyStartDateEditActive}
-              companyStartDateEditActiveToggle={
-                this.companyStartDateEditActiveToggle
-              }
-            />
-            <CompanyEndDateComponent
-              submitted={submitted}
-              companyEndDate={companyEndDate}
-              updateStateNameTitleTasksDate={this.updateStateNameTitleTasksDate}
-              companyEndDateEditActive={companyEndDateEditActive}
-              companyEndDateEditActiveToggle={
-                this.companyEndDateEditActiveToggle
-              }
-            />
-            <SubmitComponent submitted={submitted} />
-          </form>
-        </main>
-      </div>
-    );
-  }
+  const positionTitleEditActiveToggle = () => {
+    if (positionTitleEditActive === false) {
+      setCompanyNameEditActive(false);
+      setPositionTitleEditActive(true);
+      setMainJobTasksEditActive(false);
+      setCompanyStartDateEditActive(false);
+      setCompanyEndDateEditActive(false);
+    }
+    if (positionTitleEditActive === true) {
+      setCompanyNameEditActive(false);
+      setPositionTitleEditActive(false);
+      setMainJobTasksEditActive(false);
+      setCompanyStartDateEditActive(false);
+      setCompanyEndDateEditActive(false);
+    }
+  };
+
+  const mainJobTasksEditActiveToggle = () => {
+    if (mainJobTasksEditActive === false) {
+      setCompanyNameEditActive(false);
+      setPositionTitleEditActive(false);
+      setMainJobTasksEditActive(true);
+      setCompanyStartDateEditActive(false);
+      setCompanyEndDateEditActive(false);
+    }
+    if (mainJobTasksEditActive === true) {
+      setCompanyNameEditActive(false);
+      setPositionTitleEditActive(false);
+      setMainJobTasksEditActive(false);
+      setCompanyStartDateEditActive(false);
+      setCompanyEndDateEditActive(false);
+    }
+  };
+  const companyStartDateEditActiveToggle = () => {
+    if (companyStartDateEditActive === false) {
+      setCompanyNameEditActive(false);
+      setPositionTitleEditActive(false);
+      setMainJobTasksEditActive(false);
+      setCompanyStartDateEditActive(true);
+      setCompanyEndDateEditActive(false);
+    }
+    if (companyStartDateEditActive === true) {
+      setCompanyNameEditActive(false);
+      setPositionTitleEditActive(false);
+      setMainJobTasksEditActive(false);
+      setCompanyStartDateEditActive(false);
+      setCompanyEndDateEditActive(false);
+    }
+  };
+  const companyEndDateEditActiveToggle = () => {
+    if (companyEndDateEditActive === false) {
+      setCompanyNameEditActive(false);
+      setPositionTitleEditActive(false);
+      setMainJobTasksEditActive(false);
+      setCompanyStartDateEditActive(false);
+      setCompanyEndDateEditActive(true);
+    }
+    if (companyEndDateEditActive === true) {
+      setCompanyNameEditActive(false);
+      setPositionTitleEditActive(false);
+      setMainJobTasksEditActive(false);
+      setCompanyStartDateEditActive(false);
+      setCompanyEndDateEditActive(false);
+    }
+  };
+
+  return (
+    <div className="practical-info">
+      <header>Practical Information</header>
+      <main>
+        <form
+          onSubmit={(e) => {
+            setSubmitted(true);
+            e.preventDefault();
+          }}
+          onChange={updateStateNameTitleTasksDate}
+        >
+          <CompanyNameComponent
+            submitted={submitted}
+            companyName={companyName}
+            updateStateNameTitleTasksDate={updateStateNameTitleTasksDate}
+            companyNameEditActive={companyNameEditActive}
+            companyNameEditActiveToggle={companyNameEditActiveToggle}
+          />
+          <PositionTitleComponent
+            submitted={submitted}
+            positionTitle={positionTitle}
+            updateStateNameTitleTasksDate={updateStateNameTitleTasksDate}
+            positionTitleEditActive={positionTitleEditActive}
+            positionTitleEditActiveToggle={positionTitleEditActiveToggle}
+          />
+          <MainJobTasksComponent
+            submitted={submitted}
+            mainJobTasks={mainJobTasks}
+            updateStateNameTitleTasksDate={updateStateNameTitleTasksDate}
+            mainJobTasksEditActive={mainJobTasksEditActive}
+            mainJobTasksEditActiveToggle={mainJobTasksEditActiveToggle}
+          />
+          <CompanyStartDateComponent
+            submitted={submitted}
+            companyStartDate={companyStartDate}
+            updateStateNameTitleTasksDate={updateStateNameTitleTasksDate}
+            companyStartDateEditActive={companyStartDateEditActive}
+            companyStartDateEditActiveToggle={companyStartDateEditActiveToggle}
+          />
+          <CompanyEndDateComponent
+            submitted={submitted}
+            companyEndDate={companyEndDate}
+            updateStateNameTitleTasksDate={updateStateNameTitleTasksDate}
+            companyEndDateEditActive={companyEndDateEditActive}
+            companyEndDateEditActiveToggle={companyEndDateEditActiveToggle}
+          />
+          <SubmitComponent submitted={submitted} />
+        </form>
+      </main>
+    </div>
+  );
 }
 
 export default PracticalInfo;
